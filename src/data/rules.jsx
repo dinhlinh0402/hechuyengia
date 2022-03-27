@@ -3,12 +3,12 @@ export default function rulesResult(arr) {
     let result = [];
     const hasil = [
         'Chứng rối loạn ám ảnh cưỡng chế',
-        'Rối loạn lo âu tổng quát',
-        'Fobia Spesifik',
+        'Rối loạn lo âu tổng quát hay còn gọi là rối loạn lo âu toàn thể (GAD)',
+        'Chứng ám sợ chuyên biệt (SPECIFIC PHOBIA)',
         'Chứng sợ xã hội',
         'Rối loạn hoảng sợ với chứng sợ hãi Agoraphobia (hay rối loạn ám ảnh sợ khoảng trống)',
-        'Rối loạn hoảng sợ không sợ chứng sợ hãi',
-        'Chứng sợ Agoraphobia không có rối loạn hoảng sợ',
+        'Rối loạn hoảng sợ nhưng không có chứng sợ hãi Agoraphobia (hay rối loạn ám ảnh sợ khoảng trống)',
+        'Chứng sợ hãi Agoraphobia nhưng không có chứng rối loạn hoảng sợ',
         'Rối loạn lo âu khác'
     ]
     let i = 0;
@@ -17,7 +17,7 @@ export default function rulesResult(arr) {
     if (arr[i++] === '1') {
         //2 3 4 5
         // 1 2 3 4 
-
+        // 11111000000000000000000
         if (arr[i++] === '1' && arr[i++] === '1' && arr[i++] === '1' && arr[i++] === '1') {
             result.push(hasil[0]);
         }
@@ -48,10 +48,10 @@ export default function rulesResult(arr) {
         if (arr[i++] === '1' && arr[i++] === '1' && arr[i++] === '1') {
             //19 
             if (arr[i++] === '1') {
-                //Agoraphobia & panik
+                //Rối loạn hoảng sợ với chứng sợ hãi Agoraphobia (hay rối loạn ám ảnh sợ khoảng trống)
                 result.push(hasil[4]);
             } else {
-                // hoảng sợ mà không sợ hãi
+                // Rối loạn hoảng sợ nhưng không có chứng sợ hãi Agoraphobia (hay rối loạn ám ảnh sợ khoảng trống)
                 result.push(hasil[5]);
             }
         }
@@ -62,10 +62,10 @@ export default function rulesResult(arr) {
             if (result.find(element => element === hasil[4])) {
                 //không làm gì cả 
             } else if (result.find(element => element === hasil[5])) {
-                // dobiến thành chứng sợ hãi và hoảng sợ
+                // biến thành Rối loạn hoảng sợ với chứng sợ hãi Agoraphobia (hay rối loạn ám ảnh sợ khoảng trống)
                 result[result.length - 1] = hasil[4];
             } else {
-                //Chứng sợ Agoraphobia không có rối loạn hoảng sợ
+                // Chứng sợ hãi Agoraphobia nhưng không có chứng rối loạn hoảng sợ
                 result.push(hasil[6]);
             }
         }
